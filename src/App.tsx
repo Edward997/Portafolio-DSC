@@ -1,17 +1,18 @@
-import React from 'react';
+// App.tsx
+import * as React from "react"
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
-import Banner from './components/banner';
-import Navbar from './components/navbar';
-import './App.css';
+import homePage from './pages/homePage';
 
-function App() {
-  return (
+
+export const App = () =>(
+
     <ChakraProvider>
-      <Banner />
-      <Navbar />
-      {/* Aquí colocarás el resto de tu aplicación */}
+      <Routes>
+        <Route path="/" Component={homePage} />
+        <Route path="/" element={<Navigate replace to="/" />} />
+      </Routes>
     </ChakraProvider>
-  );
-}
 
-export default App;
+)
+
