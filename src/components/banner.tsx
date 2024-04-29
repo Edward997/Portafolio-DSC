@@ -1,9 +1,11 @@
-import React from 'react';
-import { Box, Heading, Text, Button } from '@chakra-ui/react';
+import { Flex, Heading, Text, Link, Box } from "@chakra-ui/react";
+import Navbar from "./navbar";
 
-const Banner = () => {
+interface BannerProps { }
+
+const Banner: React.FC<BannerProps> = () => {
   return (
-    <Box
+    <Flex
       backgroundImage="url('https://cdn.pixabay.com/photo/2016/11/30/20/58/programming-1873854_1280.png')"
       backgroundSize="cover"
       backgroundPosition="center"
@@ -16,22 +18,49 @@ const Banner = () => {
       textAlign="center"
       position="relative" // Agregamos posición relativa al contenedor para posicionar el texto
       padding={['20px', '40px', '60px']} // Ajusta el espacio interior para diferentes tamaños de pantalla
+
     >
-      {/* Contenedor para el texto */}
-      <Box zIndex="1" position="relative" maxWidth="600px"> {/* Limitamos el ancho del texto */}
-        <Heading as="h1" size={['md', 'lg', 'xl']} mb={4}> {/* Ajustamos el tamaño del título para diferentes tamaños de pantalla */}
-          ¡Bienvenido a mi sitio!
+
+      <Flex direction="column" alignItems="center">
+        <Navbar />
+        <Heading as="h1" fontSize={["3xl", "4xl", "5xl"]}>
+          IntelliEdge Solutions
         </Heading>
-        <Text fontSize={['sm', 'md', 'lg']} mb={4}> {/* Ajustamos el tamaño del texto para diferentes tamaños de pantalla */}
-          Esta es la descripción del sitio.
+        <Text maxW="700px" color="gray.300" mt={4} mb={8} fontSize={["md", "xl"]}>
+          Experienced full-stack developer with a passion for crafting beautiful and functional web and desktop applications.
         </Text>
-        <Button colorScheme="blue" size={['sm', 'md', 'lg']}> {/* Ajustamos el tamaño del botón para diferentes tamaños de pantalla */}
-          Comenzar
-        </Button>
-      </Box>
-    </Box>
+        <Flex gap={4}>
+          <Link
+            href="#"
+            fontSize="sm"
+            fontWeight="medium"
+            bg="#1D3557"
+            color="gray.50"
+            px={4}
+            py={2}
+            rounded="md"
+            _hover={{ bg: '#1D3557', opacity: 0.9 }}
+          >
+            View Projects
+          </Link>
+          <Link
+            href="#"
+            fontSize="md"
+            fontWeight="medium"
+            border="1px"
+            borderColor="#1D3557"
+            color="gray.50"
+            px={4}
+            py={2}
+            rounded="md"
+            _hover={{ bg: '#1D3557', opacity: 0.9, color: 'gray.50' }}
+          >
+            Contact Us
+          </Link>
+        </Flex>
+      </Flex>
+    </Flex>
   );
 };
 
 export default Banner;
-
