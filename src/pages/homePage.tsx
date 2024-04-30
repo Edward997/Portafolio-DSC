@@ -1,23 +1,40 @@
 // pages/HomePage.tsx
 
 import React from 'react';
-import { Box, Heading, Text, Button, ChakraProvider, Container, Link, SimpleGrid } from '@chakra-ui/react'; // Importa componentes de Chakra UI según sea necesario
+import { Box, Heading, Text, Button, ChakraProvider, Container, Link, SimpleGrid, IconButton } from '@chakra-ui/react'; // Importa componentes de Chakra UI según sea necesario
 import Navbar from '../components/navbar';
 import Banner from '../components/banner';
 import Footer from '../components/footer';
 import FeaturedProjects from './featuredProjects';
-
+import { FaGithub, FaYoutube } from "react-icons/fa"
+import guionInstruccional from '../assets/images/guion_Instruccional.png'; // Ajusta la ruta según la estructura de tu proyecto
+import pdfGenerator from '../assets/images/pdf_Generator.jpeg';
 const HomePage: React.FC = () => {
     // Array de proyectos para mostrar en la página de inicio
     const projects = [
-        { 
-            id: 1, 
-            title: "Society Events", 
-            description: "This project is a platform that allows the creation of social events which encourage the participation of the community to solve problems that afflict society without a profit motive.", 
-            image: "https://raw.githack.com/TheIcySpark/Society-events/main/screenshots/1.png" 
+        {
+            id: 1,
+            title: "Society Events",
+            description: "This project is a platform that allows the creation of social events which encourage the participation of the community to solve problems that afflict society without a profit motive.",
+            image: "https://raw.githack.com/TheIcySpark/Society-events/main/screenshots/1.png",
+            youtubeLink: "",
+            githubLink: "https://github.com/TheIcySpark/Society-events",
+            githubPagesLink:""
         },
-        { id: 2, title: "Project 2", description: "Description for Project 2" },
-        { id: 3, title: "Project 3", description: "Description for Project 3" },
+        { 
+            id: 2, 
+            title: "Instructional Script", 
+            description: "Website development for didactic instructional script with html,css and pure javascript (vanilla) designed responsive.",
+            image: guionInstruccional,
+            githubLink: "https://github.com/TheIcySpark/Guion-instruccional",    
+            githubPagesLink:"https://theicyspark.github.io/Guion-instruccional/instructionalScript/units/index.html"
+        },
+        { 
+            id: 3, 
+            title: "PDF Report Generator", 
+            description: "Desktop application to generate pdf or excel reports, process automation, made with JAVA and data management of text files or spreadsheets for data extraction and processing, information.",
+            image:pdfGenerator,
+         },
     ];
 
     return (
@@ -36,7 +53,7 @@ const HomePage: React.FC = () => {
                     <SimpleGrid columns={[1, 2, 3]} gap={6}>
                         {/* Renderizar los tres proyectos */}
                         {projects.map((project) => (
-                            <Box key={project.id} borderWidth="1px" borderRadius="lg" overflow="hidden">
+                            <Box key={project.id} borderWidth="1px" borderRadius="lg" bg="white" overflow="hidden">
                                 <img
                                     alt={project.title}
                                     src={project.image}
@@ -50,25 +67,31 @@ const HomePage: React.FC = () => {
                                     </Heading>
                                     <p className="text-gray-500 dark:text-gray-400">{project.description}</p>
                                 </Box>
-                                <Box px={6} py={4}>
-                                    <Link href={`/projects/${project.id}`} >
-                                        <Button
-                                            as="a"
-                                            colorScheme="gray"
-                                            size="sm"
-                                            rounded="md"
-                                            _hover={{ bg: "gray.700", color: "white" }}
-                                        >
-                                            View Project
-                                        </Button>
-                                    </Link>
+                                <Box px={6} py={4} display="flex" justifyContent="center" alignItems="center" gap={2}>
+                                    {project.youtubeLink && (
+                                        <Link href={project.youtubeLink} target="_blank" rel="noopener noreferrer">
+                                            <IconButton aria-label={''} icon={<FaYoutube />} colorScheme='red'>
+                                            </IconButton>
+                                        </Link>
+                                    )}
+                                    {project.githubLink && (
+                                        <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                                            <IconButton aria-label={''} icon={<FaGithub />} colorScheme='gray'>
+                                            </IconButton>
+                                        </Link>
+                                    )}
+                                    {project.githubPagesLink && (
+                                        <Link href={project.githubPagesLink} target="_blank" rel="noopener noreferrer">
+                                            <Button colorScheme="teal" size="sm" mr={2}>GitHub Pages</Button>
+                                        </Link>
+                                    )}
                                 </Box>
                             </Box>
                         ))}
                     </SimpleGrid>
                     {/* Botón para ver todos los proyectos */}
                     <Box mt={8} textAlign="center">
-                        <Link href="/featured-projects">
+                        <Link href="/featuredProjects">
                             <Button variant="outline" colorScheme="gray" size="lg">
                                 View All
                             </Button>
