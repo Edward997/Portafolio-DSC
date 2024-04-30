@@ -236,7 +236,7 @@ const FeaturedProjects = () => {
 
   return (
     <ChakraProvider>
-      <Box bg="#F1FAEE"  minH="100vh">
+      <Box bg="#F1FAEE" w="100%">
         <Container maxW="container.xl" py={12}>
           <Box textAlign="center" mb={12}>
             <Heading as="h2" mb={4} fontSize="3xl" fontWeight="bold">
@@ -259,55 +259,45 @@ const FeaturedProjects = () => {
                 <TabPanel key={index}>
                   <SimpleGrid columns={1} gap={6}>
                     {category.items.map((project) => (
-                      <Box
-                        key={project.id}
-                        borderWidth="1px"
-                        borderRadius="lg"
-                        bg="white"
-                        overflow="hidden"
-                        display={{ base: "block", lg: "flex" }}
-                      >
-                        <Stack
-                          flex="1"
-                          p={6}
-                          spacing={4}
-                          justifyContent="center"
-                          alignItems={{ base: "center", lg: "flex-start" }}
-                        >
-                          <Heading as="h3" size="md" mb={2}>
-                            {project.title}
-                          </Heading>
-                          <Text color="gray.500" colorScheme="gray">
-                            {project.description}
-                          </Text>
-                          <Stack direction="row" spacing={2}>
-                            {project.youtubeLink && (
-                              <Link href={project.youtubeLink} target="_blank" rel="noopener noreferrer">
-                                <IconButton aria-label={''} icon={<FaYoutube />} colorScheme='red' />
-                              </Link>
-                            )}
-                            {project.githubLink && (
-                              <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                                <IconButton aria-label={''} icon={<FaGithub />} colorScheme='gray' />
-                              </Link>
-                            )}
-                            {project.githubPagesLink && (
-                              <Link href={project.githubPagesLink} target="_blank" rel="noopener noreferrer">
-                                <Button colorScheme="teal" size="sm" mr={2}>GitHub Pages</Button>
-                              </Link>
-                            )}
-                          </Stack>
-                        </Stack>
-                        <Box flex="1">
-                          <img
-                            alt={project.title}
-                            src={project.image}
-                            className="aspect-video overflow-hidden rounded-t-xl object-cover object-center"
-                            width="100%"
-                            height="auto"
-                          />
-                        </Box>
-                      </Box>
+                       <Box key={project.id} borderWidth="1px" borderRadius="lg" bg="white" overflow="hidden" display="flex" flexDirection={project.id % 2 === 0 ? "row" : "row-reverse"}>
+                       <Box flex="1">
+                         <Box p={6}>
+                           <Heading as="h3" size="md" mb={2}>
+                             {project.title}
+                           </Heading>
+                           <Text color="gray.500" colorScheme="gray">{project.description}</Text>
+                         </Box>
+                         <Box px={6} py={4} display="flex" justifyContent="center" alignItems="center" gap={2}>
+                           {project.youtubeLink && (
+                             <Link href={project.youtubeLink} target="_blank" rel="noopener noreferrer">
+                               <IconButton aria-label={''} icon={<FaYoutube />} colorScheme='red'>
+                               </IconButton>
+                             </Link>
+                           )}
+                           {project.githubLink && (
+                             <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                               <IconButton aria-label={''} icon={<FaGithub />} colorScheme='gray'>
+                               </IconButton>
+                             </Link>
+                           )}
+                           {project.githubPagesLink && (
+                             <Link href={project.githubPagesLink} target="_blank" rel="noopener noreferrer">
+                               <Button colorScheme="teal" size="sm" mr={2}>GitHub Pages</Button>
+                             </Link>
+                           )}
+                         </Box>
+                       </Box>
+                       <img
+                         alt={project.title}
+                         src={project.image}
+                         className="aspect-video overflow-hidden rounded-t-xl object-cover object-center"
+                         height="310"
+                         width="550"
+                         style={{ margin: '10px' }}
+                       />
+                     </Box>
+
+
                     ))}
                   </SimpleGrid>
                 </TabPanel>
