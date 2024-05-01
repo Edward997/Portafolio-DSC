@@ -7,8 +7,10 @@ import Banner from '../components/banner';
 import Footer from '../components/footer';
 import FeaturedProjects from './featuredProjects';
 import { FaGithub, FaYoutube } from "react-icons/fa"
-import guionInstruccional from '../assets/images/guion_Instruccional.png'; // Ajusta la ruta según la estructura de tu proyecto
-import pdfGenerator from '../assets/images/pdf_Generator.jpeg';
+
+import societyEvents from '../assets/images/webProjects/societyEvents.png';
+import guionInstruccional from '../assets/images/webProjects/guion_Instruccional.png'; // Ajusta la ruta según la estructura de tu proyecto
+import pdfGenerator from '../assets/images/desktopProjects/pdf_Generator.jpeg';
 const HomePage: React.FC = () => {
     // Array de proyectos para mostrar en la página de inicio
     const projects = [
@@ -16,25 +18,25 @@ const HomePage: React.FC = () => {
             id: 1,
             title: "Society Events",
             description: "This project is a platform that allows the creation of social events which encourage the participation of the community to solve problems that afflict society without a profit motive.",
-            image: "https://raw.githack.com/TheIcySpark/Society-events/main/screenshots/1.png",
+            image: societyEvents,
             youtubeLink: "",
             githubLink: "https://github.com/TheIcySpark/Society-events",
-            githubPagesLink:""
+            githubPagesLink: ""
         },
-        { 
-            id: 2, 
-            title: "Instructional Script", 
+        {
+            id: 2,
+            title: "Instructional Script",
             description: "Website development for didactic instructional script with html,css and pure javascript (vanilla) designed responsive.",
             image: guionInstruccional,
-            githubLink: "https://github.com/TheIcySpark/Guion-instruccional",    
-            githubPagesLink:"https://theicyspark.github.io/Guion-instruccional/instructionalScript/units/index.html"
+            githubLink: "https://github.com/TheIcySpark/Guion-instruccional",
+            githubPagesLink: "https://theicyspark.github.io/Guion-instruccional/instructionalScript/units/index.html"
         },
-        { 
-            id: 3, 
-            title: "PDF Report Generator", 
+        {
+            id: 3,
+            title: "PDF Report Generator",
             description: "Desktop application to generate pdf or excel reports, process automation, made with JAVA and data management of text files or spreadsheets for data extraction and processing, information.",
-            image:pdfGenerator,
-         },
+            image: pdfGenerator,
+        },
     ];
 
     return (
@@ -46,9 +48,9 @@ const HomePage: React.FC = () => {
                         <Heading as="h2" mb={4} fontSize="3xl" fontWeight="bold">
                             Featured Projects
                         </Heading>
-                        <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                        <Text className="mx-auto max-w-[700px]" color="gray.500" fontSize={['xl', 'lg', 'xl']} textStyle={['relaxed', 'base', 'relaxed']} colorScheme="gray">
                             Check out some of my recent work.
-                        </p>
+                        </Text>
                     </Box>
                     <SimpleGrid columns={[1, 2, 3]} gap={6}>
                         {/* Renderizar los tres proyectos */}
@@ -65,7 +67,7 @@ const HomePage: React.FC = () => {
                                     <Heading as="h3" size="md" mb={2}>
                                         {project.title}
                                     </Heading>
-                                    <p className="text-gray-500 dark:text-gray-400">{project.description}</p>
+                                    <Text color="gray.500" colorScheme="gray">{project.description}</Text>
                                 </Box>
                                 <Box px={6} py={4} display="flex" justifyContent="center" alignItems="center" gap={2}>
                                     {project.youtubeLink && (
