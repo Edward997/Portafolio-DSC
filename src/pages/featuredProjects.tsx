@@ -45,20 +45,25 @@ const projects = [
       {
         id: 3,
         title: "Market Scraping and Updating",
-        description:""
-          // <>
-          //   <p>
-          //     The project involves an application to extract{' '}
-          //     <b style={{ color: "green" }}>data</b> from online stores, similar to Amazon.
-          //     It uses <b style={{ color: "green" }}>Puppeteer</b> for scraping product information.
-          //     The data is stored in a <b style={{ color: "green" }}>database</b> and accessed through
-          //     a user interface developed with <b style={{ color: "green" }}>Electron</b>,{' '}
-          //     <b style={{ color: "green" }}>Node</b>, and <b style={{ color: "green" }}>React.js</b>.
-          //     The application integrates with the <b style={{ color: "green" }}>DeepL</b> API for automatic translation
-          //     and connects to a <b style={{ color: "green" }}>Shopify</b> store. It combines scraping techniques,
-          //     user interface development, and connection to an e-commerce platform to manage product data in Shopify.
-          //   </p>
-          // </>
+        description:
+        
+        
+          
+        
+      
+          <>
+            <p>
+              The project involves an application to extract{' '}
+              <b style={{ color: "green" }}>data</b> from online stores, similar to Amazon.
+              It uses <b style={{ color: "green" }}>Puppeteer</b> for scraping product information.
+              The data is stored in a <b style={{ color: "green" }}>database</b> and accessed through
+              a user interface developed with <b style={{ color: "green" }}>Electron</b>,{' '}
+              <b style={{ color: "green" }}>Node</b>, and <b style={{ color: "green" }}>React.js</b>.
+              The application integrates with the <b style={{ color: "green" }}>DeepL</b> API for automatic translation
+              and connects to a <b style={{ color: "green" }}>Shopify</b> store. It combines scraping techniques,
+              user interface development, and connection to an e-commerce platform to manage product data in Shopify.
+            </p>
+          </>
           ,
         image: theArgentino,
         youtubeLink: "",
@@ -299,7 +304,11 @@ const FeaturedProjects = () => {
                             )}
                             {project.githubPagesLink && (
                               <Link href={project.githubPagesLink} target="_blank" rel="noopener noreferrer">
-                                <Button colorScheme="teal" size="sm" mr={2}>GitHub Pages</Button>
+                                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"></link>
+                                <IconButton aria-label="Icono" colorScheme='cyan'>
+                                  <span className="material-symbols-outlined">public</span>
+                                </IconButton>
+                                
                               </Link>
                             )}
                           </Box>
