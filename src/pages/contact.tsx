@@ -21,6 +21,7 @@ const Contact = () => {
   const [state, handleSubmit] = useForm("mqkrnvre");
   const [isOpen, setIsOpen] = useState(false);
   const leastDestructiveRef = React.useRef(null); // Agrega una referencia
+  const [formValues, setFormValues] = useState({ email: '', message: '' });
 
   const onClose = () => setIsOpen(false);
 
@@ -29,7 +30,16 @@ const Contact = () => {
     await handleSubmit(e);
     if (state.succeeded) {
       setIsOpen(true);
+      setFormValues({ email: '', message: '' }); // Limpiar el formulario después de que se haya enviado el mensaje
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormValues(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
   return (
@@ -46,12 +56,12 @@ const Contact = () => {
             <Flex flexDir="column">
               <Box mb={4}>
                 <label htmlFor="email">Email</label>
-                <Input id="email" placeholder="Enter your email" type="email" name="email" />
+                <Input id="email" placeholder="Enter your email" type="email" name="email" value={formValues.email} onChange={handleChange} required />
                 <ValidationError prefix="Email" field="email" errors={state.errors} />
               </Box>
               <Box mb={4}>
                 <label htmlFor="message">Message</label>
-                <Textarea id="message" placeholder="Enter your message" minH="100px" name="message" />
+                <Textarea id="message" placeholder="Enter your message" minH="100px" name="message" value={formValues.message} onChange={handleChange} required />
                 <ValidationError prefix="Message" field="message" errors={state.errors} />
               </Box>
               <Button type="submit" disabled={state.submitting}>Send Message</Button>
