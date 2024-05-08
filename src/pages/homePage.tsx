@@ -12,6 +12,7 @@ import societyEvents from '../assets/images/webProjects/societyEvents.png';
 import guionInstruccional from '../assets/images/webProjects/guion_Instruccional.png'; // Ajusta la ruta según la estructura de tu proyecto
 import pdfGenerator from '../assets/images/desktopProjects/pdf_Generator.jpeg';
 import Skills from './skills';
+import Contact from './contact';
 const HomePage: React.FC = () => {
     // Array de proyectos para mostrar en la página de inicio
     const projects = [
@@ -103,6 +104,7 @@ const HomePage: React.FC = () => {
                 </Container>
             </Box>
             <Skills/>
+            <Contact/>
             <Footer />
         </ChakraProvider>
 
