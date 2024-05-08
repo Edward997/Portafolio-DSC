@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, IconButton, Tooltip, useColorModeValue } from '@chakra-ui/react';
 import { FaReact, FaNodeJs, FaDatabase, FaCode, FaTools } from 'react-icons/fa';
+import '../App.css'
 
 import iconAngular from '../assets/icons/angular.svg'
 import iconHtml from '../assets/icons/html5.svg'
@@ -53,7 +54,7 @@ const SkillsSection = () => {
                                 <img
                                     src={iconHtml}
                                     alt="HTML 5 Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="CSS">
@@ -61,21 +62,21 @@ const SkillsSection = () => {
                                 <img
                                     src={iconCss}
                                     alt="CSS Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="JavaScript">
                                 <img
                                     src={iconJavaScript}
                                     alt="JavaScript Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="TypeScript">
                                 <img
                                     src={iconTypeScript}
                                     alt="JTypeScript Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             {/* Agrega más insignias para otras tecnologías frontend según sea necesario */}
@@ -92,7 +93,7 @@ const SkillsSection = () => {
                                 <img
                                     src={iconSwagger}
                                     alt="Swagger Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="Postman">
@@ -100,7 +101,7 @@ const SkillsSection = () => {
                                 <img
                                     src={iconPostman}
                                     alt="Postman Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="MySQL">
@@ -108,7 +109,7 @@ const SkillsSection = () => {
                                 <img
                                     src={iconMySql}
                                     alt="My SQL Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="PHP">
@@ -116,7 +117,7 @@ const SkillsSection = () => {
                                 <img
                                     src={iconPHP}
                                     alt="PHP Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             {/* Agrega más insignias para otras tecnologías backend según sea necesario */}
@@ -136,28 +137,28 @@ const SkillsSection = () => {
                                     <img
                                         src={iconReact}
                                         alt="React Icon"
-                                        style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                        className="icono-html"
                                     />
                                 </Tooltip>
                                 <Tooltip label="Angular">
                                     <img
                                         src={iconAngular}
                                         alt="Angular Icon"
-                                        style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                        className="icono-html"
                                     />
                                 </Tooltip>
                                 <Tooltip label="Chakra UI">
                                     <img
                                         src={iconChakraUI}
                                         alt="Chakra UI"
-                                        style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                        className="icono-html"
                                     />
                                 </Tooltip>
                                 <Tooltip label="Electron">
                                     <img
                                         src={iconElectron}
                                         alt="Electron"
-                                        style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                        className="icono-html"
                                     />
                                 </Tooltip>
                                 {/* Agrega más insignias para otros frameworks frontend según sea necesario */}
@@ -175,28 +176,28 @@ const SkillsSection = () => {
                                     <img
                                         src={iconNodejs}
                                         alt="Node.js Icon"
-                                        style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                        className="icono-html"
                                     />
                                 </Tooltip>
                                 <Tooltip label="Django">
                                     <img
                                         src={iconDjango}
                                         alt="Django Icon"
-                                        style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                        className="icono-html"
                                     />
                                 </Tooltip>
                                 <Tooltip label="Spring">
                                     <img
                                         src={iconSpring}
                                         alt="Spring Icon"
-                                        style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                        className="icono-html"
                                     />
                                 </Tooltip>
                                 <Tooltip label="ASP .NET Core">
                                     <img
                                         src={iconNet}
                                         alt="ASP .NET Core"
-                                        style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                        className="icono-html"
                                     />
                                 </Tooltip>
                                 {/* Agrega más insignias para otros frameworks backend según sea necesario */}
@@ -219,28 +220,28 @@ const SkillsSection = () => {
                                 <img
                                     src={iconJava}
                                     alt="Java Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="Python">
                                 <img
                                     src={iconPython}
                                     alt="Python Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="C#">
                                 <img
                                     src={iconCsharp}
                                     alt="C# Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="C++">
                                 <img
                                     src={iconCplusplus}
                                     alt="C++"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                         </Flex>
@@ -256,63 +257,63 @@ const SkillsSection = () => {
                                 <img
                                     src={iconGit}
                                     alt="Git Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="GitHub">
                                 <img
                                     src={iconGithub}
                                     alt="GitHub Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="Figma">
                                 <img
                                     src={iconFigma}
                                     alt="Figma Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="Godot Engine">
                                 <img
                                     src={iconGodot}
                                     alt="Godot Eengine Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="Visual Studio Code">
                                 <img
                                     src={iconVsCode}
                                     alt="Visual Studio Code Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="Visual Studio Professional">
                                 <img
                                     src={iconVsStudio}
                                     alt="Visual Studio Professional Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="Sublime Text">
                                 <img
                                     src={iconSublime}
                                     alt="Sublime Text Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="Intellijidea">
                                 <img
                                     src={iconIntelliji}
                                     alt="Intellijidea Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             <Tooltip label="Pycharm">
                                 <img
                                     src={iconPyCharm}
                                     alt="Pycharm Icon"
-                                    style={{ width: '40px', height: '40px', margin: '0 5px' }}
+                                    className="icono-html"
                                 />
                             </Tooltip>
                             
