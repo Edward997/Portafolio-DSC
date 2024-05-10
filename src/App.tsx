@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import homePage from './pages/homePage';
 import FeaturedProjectsTabs from "./pages/featuredProjects";
+import FeaturedProjects from "./pages/featuredProjects";
 
 
 export const App = () =>(
@@ -12,7 +13,7 @@ export const App = () =>(
       <Routes>
         <Route path="/" Component={homePage} />
         <Route path="/" element={<Navigate replace to="/" />} />
-        <Route path="/featuredProjects" element={<FeaturedProjectsTabs/>} />
+        <Route path="/featuredProjects" element={<FeaturedProjects/>} />
       </Routes>
     </ChakraProvider>
 

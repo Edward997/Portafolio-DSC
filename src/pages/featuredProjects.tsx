@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FaGithub, FaYoutube } from 'react-icons/fa';
-import { ChakraProvider, Box, Container, Heading, SimpleGrid, Link, IconButton, Button, Tab, TabList, TabPanel, TabPanels, Tabs, Stack } from '@chakra-ui/react';
+import { FaArrowLeft, FaArrowRight, FaGithub, FaYoutube } from 'react-icons/fa';
+import { ChakraProvider, Box, Container, Heading, SimpleGrid, Link, IconButton, Button, Tab, TabList, TabPanel, TabPanels, Tabs, Stack, useDisclosure, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useBreakpointValue, } from '@chakra-ui/react';
 import { Text } from "@chakra-ui/react";
 import '../App.css'
 
@@ -16,6 +16,9 @@ import schoolManagement from '../assets/images/schoolProjects/schoolManagmentSys
 import musicPlayer from '../assets/images/schoolProjects/musicPlayer.png';
 import pathFinder from '../assets/images/personalProjects/pathFinderVisualizer.png';
 import sortVisualizer from '../assets/images/personalProjects/sortVisualizer.png';
+import uxuiDesign from '../assets/images/uxUiDesign/uxuiDesing.png';
+import ChakraCarousel from 'chakra-ui-carousel';
+
 
 export interface Project {
   id: number;
@@ -25,6 +28,7 @@ export interface Project {
   youtubeLink: string;
   githubLink: string;
   githubPagesLink: string;
+  images?: string[];
 }
 
 export interface ProjectCategory {
@@ -65,12 +69,6 @@ const projects: ProjectCategory[] = [
         id: 3,
         title: "Market Scraping and Updating",
         description:
-
-
-
-
-
-
           <p>
             The project involves an application to extract{' '}
             <b style={{ color: "green" }}>data</b> from online stores, similar to Amazon.
@@ -129,7 +127,7 @@ const projects: ProjectCategory[] = [
       {
         id: 6,
         title: "Movies database",
-        description: 
+        description:
           <p>
             Web application created with{" "}
             <b style={{ color: "green" }}>ASP.Net Core</b>, uses OAuth2
@@ -140,7 +138,7 @@ const projects: ProjectCategory[] = [
             of the different data of the film. The database connects to the IMDB{" "}
             <b style={{ color: "green" }}>API</b> to update its data.
           </p>
-      
+
         ,
         image: movieDB,
         youtubeLink: "https://www.youtube.com/watch?v=xSsXQeolOvI&ab_channel=IsaacManjarrezleyva",
@@ -150,7 +148,7 @@ const projects: ProjectCategory[] = [
       {
         id: 7,
         title: "Artificial Intelligence Glove",
-        description: 
+        description:
           <p>
             The project consists of a glove which has different{" "}
             <b style={{ color: "green" }}>sensors</b> connected to detect how much each finger is flexed.
@@ -168,7 +166,7 @@ const projects: ProjectCategory[] = [
       {
         id: 8,
         title: "School Managment System",
-        description: 
+        description:
           <p>
             The School Management System is capable of tracking members within a
             school, as well as books and sets of books within an academic space.
@@ -193,7 +191,7 @@ const projects: ProjectCategory[] = [
       {
         id: 9,
         title: "Music Player",
-        description: 
+        description:
           <p>
             The project is developed with <b style={{ color: "green" }}>Django (Python)</b> and <b style={{ color: "green" }}>React (JavaScript)</b>.
             Music is automatically downloaded by connecting to the Spotify <b style={{ color: "green" }}>API</b> to fetch song data such as images, name, album, etc.
@@ -215,7 +213,7 @@ const projects: ProjectCategory[] = [
       {
         id: 10,
         title: "Path Finder Visualizer",
-        description: 
+        description:
           <p>
             This application is created using <b style={{ color: "green" }}>React JS</b>.
             Its purpose is to demonstrate various <b style={{ color: "green" }}>algorithms</b>
@@ -230,7 +228,7 @@ const projects: ProjectCategory[] = [
       {
         id: 11,
         title: "Sort visualizer",
-        description: 
+        description:
           <p>
             Application created using <b style={{ color: "green" }}>React JS</b>, it is composed of a set of different popular
             <b style={{ color: "green" }}>algorithms</b> used to sort data. It features a graphical interface that visualizes the sorting process.
@@ -250,17 +248,43 @@ const projects: ProjectCategory[] = [
         id: 12,
         title: "Digital Document Center",
         description: "",
-        image: "",
+        image: uxuiDesign,
         youtubeLink: "",
         githubLink: "",
-        githubPagesLink: ""
+        githubPagesLink: "",
+        images: [guionInstruccional, schoolManagement],
       },
     ]
   }
 ];
 
 const FeaturedProjects = () => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [currentImages, setCurrentImages] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? totalImages - 1 : prevIndex - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === totalImages - 1 ? 0 : prevIndex + 1));
+  };
+
+  const arrowSize = useBreakpointValue({ base: 'md', md: 'lg' });
+
+  const handleOpenModal = (images: string[]) => {
+    setCurrentImages(images);
+    onOpen(); // Abre el modal cuando se llama a esta función
+  };
+  
+  const handleCloseModal = () => {
+    setCurrentImages([]);
+    onClose(); // Cierra el modal cuando se llama a esta función
+  };
+  const totalImages = currentImages.length;
+
+  const height = useBreakpointValue({ base: '300px', md: '400px' });
 
   return (
     <ChakraProvider>
@@ -278,115 +302,164 @@ const FeaturedProjects = () => {
           {/* Pestañas para diferentes categorías */}
           <Tabs isFitted variant="enclosed-colored" colorScheme="teal" defaultIndex={0} >
             <TabList mb="1em"
-            overflowX={["auto", "visible"]}
-            flexWrap={["nowrap", "wrap"]}>
+              overflowX={["auto", "visible"]}
+              flexWrap={["nowrap", "wrap"]}>
               {projects.map((category, index) => (
                 <Tab key={index} flexShrink={0}>{category.category}</Tab>
               ))}
             </TabList>
             <TabPanels>
-  {projects.map((category, index) => (
-    <TabPanel key={index}>
-      <SimpleGrid columns={1} gap={6}>
-        {category.items.map((project) => (
-          <Box key={project.id} borderWidth="1px" borderRadius="lg" bg="white" overflow="hidden">
-            {/* Contenido para dispositivos de escritorio */}
-            <Box display={{ base: 'none', md: 'block' }}>
-              <Box p={6} display="flex" flexDirection={project.id % 2 === 0 ? "row" : "row-reverse"} alignItems="center">
-                <Box flex="1">
-                  <Heading as="h3" size="md" mb={2}>
-                    {project.title}
-                  </Heading>
-                  <Box color="gray.500">
-                    {typeof project.description === "string" ? (
-                      project.description
-                    ) : (
-                      project.description
-                    )}
-                  </Box>
-                  <Box py={4} display="flex" justifyContent="center" gap={2}>
-                    {project.youtubeLink && (
-                      <Link href={project.youtubeLink} target="_blank" rel="noopener noreferrer">
-                        <IconButton aria-label={''} icon={<FaYoutube />} colorScheme='red'>
-                        </IconButton>
-                      </Link>
-                    )}
-                    {project.githubLink && (
-                      <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                        <IconButton aria-label={''} icon={<FaGithub />} colorScheme='gray'>
-                        </IconButton>
-                      </Link>
-                    )}
-                    {project.githubPagesLink && (
-                      <Link href={project.githubPagesLink} target="_blank" rel="noopener noreferrer">
-                        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"></link>
-                        <IconButton aria-label="Icono" colorScheme='cyan'>
-                          <span className="material-symbols-outlined">public</span>
-                        </IconButton>
-                      </Link>
-                    )}
-                  </Box>
-                </Box>
-                <img
-                  alt={project.title}
-                  src={project.image}
-                  className="aspect-video overflow-hidden rounded-t-xl object-cover object-center"
-                  height="310"
-                  width="550"
-                  style={{ margin: '10px' }}
-                />
-              </Box>
-            </Box>
-            {/* Contenido para dispositivos móviles */}
-            <Box display={{ base: 'block', md: 'none' }}>
-              <img
-                alt={project.title}
-                src={project.image}
-                className="aspect-video overflow-hidden rounded-t-xl object-cover object-center"
-                width="550%"
-                height="310"
-              />
-              <Box p={6}>
-                <Heading as="h3" size="md" mb={2}>
-                  {project.title}
-                </Heading>
-                <Box color="gray.500">
-                  {typeof project.description === "string" ? (
-                    project.description
-                  ) : (
-                    project.description
-                  )}
-                </Box>
-                <Box py={4} display="flex" justifyContent="center" gap={2} >
-                  {project.youtubeLink && (
-                    <Link href={project.youtubeLink} target="_blank" rel="noopener noreferrer">
-                      <IconButton aria-label={''} icon={<FaYoutube />} colorScheme='red'>
-                      </IconButton>
-                    </Link>
-                  )}
-                  {project.githubLink && (
-                    <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                      <IconButton aria-label={''} icon={<FaGithub />} colorScheme='gray'>
-                      </IconButton>
-                    </Link>
-                  )}
-                  {project.githubPagesLink && (
-                    <Link href={project.githubPagesLink} target="_blank" rel="noopener noreferrer">
-                      <IconButton aria-label="Icono" colorScheme='cyan'>
-                        <span className="material-symbols-outlined">public</span>
-                      </IconButton>
-                    </Link>
-                  )}
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        ))}
-      </SimpleGrid>
-    </TabPanel>
-  ))}
-</TabPanels>
+              {projects.map((category, index) => (
+                <TabPanel key={index}>
+                  <SimpleGrid columns={1} gap={6}>
+                    {category.items.map((project) => (
+                      <Box key={project.id} borderWidth="1px" borderRadius="lg" bg="white" overflow="hidden">
+                        {/* Contenido para dispositivos de escritorio */}
+                        <Box display={{ base: 'none', md: 'block' }}>
+                          <Box p={6} display="flex" flexDirection={project.id % 2 === 0 ? "row" : "row-reverse"} alignItems="center">
+                            <Box flex="1">
+                              <Heading as="h3" size="md" mb={2}>
+                                {project.title}
+                              </Heading>
+                              <Box color="gray.500">
+                                {typeof project.description === "string" ? (
+                                  project.description
+                                ) : (
+                                  project.description
+                                )}
+                              </Box>
+                              <Box py={4} display="flex" justifyContent="center" gap={2}>
+                                {project.youtubeLink && (
+                                  <Link href={project.youtubeLink} target="_blank" rel="noopener noreferrer">
+                                    <IconButton aria-label={''} icon={<FaYoutube />} colorScheme='red'>
+                                    </IconButton>
+                                  </Link>
+                                )}
+                                {project.githubLink && (
+                                  <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                                    <IconButton aria-label={''} icon={<FaGithub />} colorScheme='gray'>
+                                    </IconButton>
+                                  </Link>
+                                )}
+                                {project.githubPagesLink && (
+                                  <Link href={project.githubPagesLink} target="_blank" rel="noopener noreferrer">
+                                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"></link>
+                                    <IconButton aria-label="Icono" colorScheme='cyan'>
+                                      <span className="material-symbols-outlined">public</span>
+                                    </IconButton>
+                                  </Link>
+                                )}
+                                {category.category === 'UX/UI Design' && (
+                                  <Button onClick={() => handleOpenModal(project.images || [])}>
+                                    Open Modal
+                                  </Button>
+
+                                )}
+                              </Box>
+                            </Box>
+                            <img
+                              alt={project.title}
+                              src={project.image}
+                              className="aspect-video overflow-hidden rounded-t-xl object-cover object-center"
+                              height="310"
+                              width="550"
+                              style={{ margin: '10px' }}
+                            />
+                          </Box>
+                        </Box>
+                        {/* Contenido para dispositivos móviles */}
+                        <Box display={{ base: 'block', md: 'none' }}>
+                          <img
+                            alt={project.title}
+                            src={project.image}
+                            className="aspect-video overflow-hidden rounded-t-xl object-cover object-center"
+                            width="550%"
+                            height="310"
+                          />
+                          <Box p={6}>
+                            <Heading as="h3" size="md" mb={2}>
+                              {project.title}
+                            </Heading>
+                            <Box color="gray.500">
+                              {typeof project.description === "string" ? (
+                                project.description
+                              ) : (
+                                project.description
+                              )}
+                            </Box>
+                            <Box py={4} display="flex" justifyContent="center" gap={2} >
+                              {project.youtubeLink && (
+                                <Link href={project.youtubeLink} target="_blank" rel="noopener noreferrer">
+                                  <IconButton aria-label={''} icon={<FaYoutube />} colorScheme='red'>
+                                  </IconButton>
+                                </Link>
+                              )}
+                              {project.githubLink && (
+                                <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                                  <IconButton aria-label={''} icon={<FaGithub />} colorScheme='gray'>
+                                  </IconButton>
+                                </Link>
+                              )}
+                              {project.githubPagesLink && (
+                                <Link href={project.githubPagesLink} target="_blank" rel="noopener noreferrer">
+                                  <IconButton aria-label="Icono" colorScheme='cyan'>
+                                    <span className="material-symbols-outlined">public</span>
+                                  </IconButton>
+                                </Link>
+                              )}
+                            </Box>
+                          </Box>
+                        </Box>
+                      </Box>
+                    ))}
+                  </SimpleGrid>
+                </TabPanel>
+              ))}
+            </TabPanels>
           </Tabs>
+          {/* Modal */}
+          <Modal isOpen={isOpen} onClose={handleCloseModal} size="xl">
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Image Carousel</ModalHeader>
+              <ModalBody>
+                <Box position="relative" width="full" overflow="hidden">
+                  <img
+                    src={currentImages[currentIndex]}
+                    alt={`Slide ${currentIndex}`}
+                    width="full"
+                    height={height}
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <IconButton
+                    aria-label="Previous Slide"
+                    icon={<FaArrowLeft />}
+                    size={arrowSize}
+                    position="absolute"
+                    top="50%"
+                    left="10px"
+                    transform="translateY(-50%)"
+                    onClick={prevSlide}
+                  />
+                  <IconButton
+                    aria-label="Next Slide"
+                    icon={<FaArrowRight />}
+                    size={arrowSize}
+                    position="absolute"
+                    top="50%"
+                    right="10px"
+                    transform="translateY(-50%)"
+                    onClick={nextSlide}
+                  />
+                </Box>
+              </ModalBody>
+              <ModalFooter>
+                <Button colorScheme="blue" onClick={handleCloseModal}>
+                  Close
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
         </Container>
       </Box>
     </ChakraProvider>
