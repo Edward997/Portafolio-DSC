@@ -17,7 +17,7 @@ import musicPlayer from '../assets/images/schoolProjects/musicPlayer.png';
 import pathFinder from '../assets/images/personalProjects/pathFinderVisualizer.png';
 import sortVisualizer from '../assets/images/personalProjects/sortVisualizer.png';
 import uxuiDesign from '../assets/images/uxUiDesign/uxuiDesing.png';
-import ChakraCarousel from 'chakra-ui-carousel';
+
 
 
 export interface Project {
