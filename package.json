@@ -2,7 +2,7 @@
   "name": "portafolio_dsc",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://edward997.github.io/Portafolio-DSC",
+  "homepage": "https://edward997.github.io/Portafolio-DSC/",
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
