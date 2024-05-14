@@ -1,4 +1,4 @@
-import { Flex, Heading, Text, Link, Box } from "@chakra-ui/react";
+import { Flex, Heading, Text, Link } from "@chakra-ui/react";
 import Navbar from "./navbar";
 
 interface BannerProps { }

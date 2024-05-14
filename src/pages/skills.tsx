@@ -1,5 +1,4 @@
-import { Box, Flex, Heading, IconButton, Tooltip, useColorModeValue } from '@chakra-ui/react';
-import { FaReact, FaNodeJs, FaDatabase, FaCode, FaTools } from 'react-icons/fa';
+import { Box, Flex, Heading, Tooltip, useColorModeValue } from '@chakra-ui/react';
 import '../App.css'
 
 import iconAngular from '../assets/icons/angular.svg'
@@ -37,7 +36,7 @@ const SkillsSection = () => {
     const badgeBgColor = useColorModeValue('gray.100', 'gray.800');
 
     return (
-        <Box py={{ base: 10, md: 20, lg: 24 }} bg={useColorModeValue('gray.100', 'gray.800')} id="skills">
+        <Box py={{ base: 10, md: 20, lg: 24 }} bg={badgeBgColor} id="skills">
             <Box maxW="container.xl" mx="auto" px={{ base: 4, md: 6 }}>
                 <Heading as="h2" textAlign="center" mb={12} fontSize={{ base: '3xl', md: '5xl' }}>
                     Our Skills

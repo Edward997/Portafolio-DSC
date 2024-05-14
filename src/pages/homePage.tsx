@@ -2,10 +2,8 @@
 
 import React from 'react';
 import { Box, Heading, Text, Button, ChakraProvider, Container, Link, SimpleGrid, IconButton } from '@chakra-ui/react'; // Importa componentes de Chakra UI según sea necesario
-import Navbar from '../components/navbar';
 import Banner from '../components/banner';
 import Footer from '../components/footer';
-import FeaturedProjects from './featuredProjects';
 import { FaGithub, FaYoutube } from "react-icons/fa"
 
 import societyEvents from '../assets/images/webProjects/societyEvents.png';

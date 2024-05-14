@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaArrowLeft, FaArrowRight, FaGithub, FaYoutube } from 'react-icons/fa';
-import { ChakraProvider, Box, Container, Heading, SimpleGrid, Link, IconButton, Button, Tab, TabList, TabPanel, TabPanels, Tabs, Stack, useDisclosure, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useBreakpointValue, } from '@chakra-ui/react';
+import { ChakraProvider, Box, Container, Heading, SimpleGrid, Link, IconButton, Button, Tab, TabList, TabPanel, TabPanels, Tabs, useDisclosure, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useBreakpointValue, } from '@chakra-ui/react';
 import { Text } from "@chakra-ui/react";
 import '../App.css'
 
