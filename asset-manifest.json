@@ -1,20 +1,11 @@
 {
   "files": {
     "main.css": "/Portafolio-DSC/static/css/main.92be4c82.css",
-    "main.js": "/Portafolio-DSC/static/js/main.6c41031c.js",
+    "main.js": "/Portafolio-DSC/static/js/main.8e27eb07.js",
     "static/js/453.20618fd5.chunk.js": "/Portafolio-DSC/static/js/453.20618fd5.chunk.js",
-    "static/media/gloveAI.png": "/Portafolio-DSC/static/media/gloveAI.e8190a4de5d3a936143a.png",
-    "static/media/moviesDatabase.png": "/Portafolio-DSC/static/media/moviesDatabase.91e70b4e7f9d27a0cbbb.png",
     "static/media/guion_Instruccional.png": "/Portafolio-DSC/static/media/guion_Instruccional.79d840a65ca7d6a961cb.png",
     "static/media/pdf_Generator.jpeg": "/Portafolio-DSC/static/media/pdf_Generator.45adb5acbea28a8f00b7.jpeg",
-    "static/media/theArgentino.png": "/Portafolio-DSC/static/media/theArgentino.6eb114260056abd7f454.png",
-    "static/media/musicPlayer.png": "/Portafolio-DSC/static/media/musicPlayer.82aa476815f03ee3087d.png",
     "static/media/societyEvents.png": "/Portafolio-DSC/static/media/societyEvents.bdc4d86ef1b2551dcd8f.png",
-    "static/media/uxuiDesing.png": "/Portafolio-DSC/static/media/uxuiDesing.05d222da4036e0104d80.png",
-    "static/media/pdfReportGUI.png": "/Portafolio-DSC/static/media/pdfReportGUI.a1d9b41ca71bc3493838.png",
-    "static/media/pathFinderVisualizer.png": "/Portafolio-DSC/static/media/pathFinderVisualizer.680178e86b908f642c53.png",
-    "static/media/sortVisualizer.png": "/Portafolio-DSC/static/media/sortVisualizer.85a3b1aecdd13bda8d5a.png",
-    "static/media/schoolManagmentSystem.png": "/Portafolio-DSC/static/media/schoolManagmentSystem.99802e728d1960e21475.png",
     "static/media/postman.svg": "/Portafolio-DSC/static/media/postman.6429657e1eecec41c40abcbcf8299c09.svg",
     "static/media/react.svg": "/Portafolio-DSC/static/media/react.bbc844f2606a41903bbde6f1719d2164.svg",
     "static/media/electron.svg": "/Portafolio-DSC/static/media/electron.3ddb3e62a0c227f6965da7ce6e78435e.svg",
@@ -46,11 +37,11 @@
     "static/media/html5.svg": "/Portafolio-DSC/static/media/html5.e1d8574f5ee485a0ad8bf83c16cf9a3a.svg",
     "static/media/css.svg": "/Portafolio-DSC/static/media/css.4ff624f1f1b50918f5fa4f56a67914f3.svg",
     "main.92be4c82.css.map": "/Portafolio-DSC/static/css/main.92be4c82.css.map",
-    "main.6c41031c.js.map": "/Portafolio-DSC/static/js/main.6c41031c.js.map",
+    "main.8e27eb07.js.map": "/Portafolio-DSC/static/js/main.8e27eb07.js.map",
     "453.20618fd5.chunk.js.map": "/Portafolio-DSC/static/js/453.20618fd5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.92be4c82.css",
-    "static/js/main.6c41031c.js"
+    "static/js/main.8e27eb07.js"
   ]
 }
