@@ -7,7 +7,7 @@ function App() {
   return (
     <ChakraProvider>
       <Routes>
-        <Route path="/" Component={homePage} />
+        <Route path="/Portafolio-DSC/" Component={homePage} />
         
       </Routes>
     </ChakraProvider>
