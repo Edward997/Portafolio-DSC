@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaArrowLeft, FaArrowRight, FaGithub, FaYoutube } from 'react-icons/fa';
 import { ChakraProvider, Box, Container, Heading, SimpleGrid, Link, IconButton, Button, Tab, TabList, TabPanel, TabPanels, Tabs, useDisclosure, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useBreakpointValue, } from '@chakra-ui/react';
 import { Text } from "@chakra-ui/react";
+import ImageCarousel from "../components/imageCarousel";
 import '../App.css'
 
 //Impor images
@@ -16,7 +17,8 @@ import schoolManagement from '../assets/images/schoolProjects/schoolManagmentSys
 import musicPlayer from '../assets/images/schoolProjects/musicPlayer.png';
 import pathFinder from '../assets/images/personalProjects/pathFinderVisualizer.png';
 import sortVisualizer from '../assets/images/personalProjects/sortVisualizer.png';
-import uxuiDesign from '../assets/images/uxUiDesign/uxuiDesing.png';
+import uxuiDesign from '../assets/images/uxUiDesign/uxuiDesign.png';
+import BackButton from '../components/backButton';
 
 
 
@@ -261,34 +263,27 @@ const projects: ProjectCategory[] = [
 const FeaturedProjects = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [currentImages, setCurrentImages] = useState<string[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? totalImages - 1 : prevIndex - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === totalImages - 1 ? 0 : prevIndex + 1));
-  };
-
-  const arrowSize = useBreakpointValue({ base: 'md', md: 'lg' });
+  
 
   const handleOpenModal = (images: string[]) => {
     setCurrentImages(images);
     onOpen(); // Abre el modal cuando se llama a esta función
   };
-  
+
   const handleCloseModal = () => {
     setCurrentImages([]);
     onClose(); // Cierra el modal cuando se llama a esta función
   };
-  const totalImages = currentImages.length;
+  
 
-  const height = useBreakpointValue({ base: '300px', md: '400px' });
+  const projectWithId12 = projects.find(project => project.items.some(item => item.id === 12));
+
+  const images = projectWithId12 ? projectWithId12.items[0].images : [];
 
   return (
     <ChakraProvider>
       <Box bg="#F1FAEE" w="100%">
+      <BackButton />
         <Container maxW="container.xl" py={12}>
           <Box textAlign="center" mb={12}>
             <Heading as="h2" mb={4} fontSize="3xl" fontWeight="bold">
@@ -424,33 +419,7 @@ const FeaturedProjects = () => {
               <ModalHeader>Image Carousel</ModalHeader>
               <ModalBody>
                 <Box position="relative" width="full" overflow="hidden">
-                  <img
-                    src={currentImages[currentIndex]}
-                    alt={`Slide ${currentIndex}`}
-                    width="full"
-                    height={height}
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <IconButton
-                    aria-label="Previous Slide"
-                    icon={<FaArrowLeft />}
-                    size={arrowSize}
-                    position="absolute"
-                    top="50%"
-                    left="10px"
-                    transform="translateY(-50%)"
-                    onClick={prevSlide}
-                  />
-                  <IconButton
-                    aria-label="Next Slide"
-                    icon={<FaArrowRight />}
-                    size={arrowSize}
-                    position="absolute"
-                    top="50%"
-                    right="10px"
-                    transform="translateY(-50%)"
-                    onClick={nextSlide}
-                  />
+                  {images && images.length > 0 && <ImageCarousel images={images} />}
                 </Box>
               </ModalBody>
               <ModalFooter>
